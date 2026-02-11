@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insurance Company Withdrawal - Sign In / Sign Up</title>
+  <title>Insurance Company Limited - Sign In / Sign Up</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -53,8 +53,14 @@
       font-size: 1.8rem;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 12px;
       color: #dc2626;
+    }
+    .subtitle {
+      text-align: center;
+      color: #4b5563;
+      margin-bottom: 24px;
+      font-size: 1rem;
     }
     .form-group {
       margin-bottom: 20px;
@@ -126,8 +132,8 @@
 
     <!-- SIGN IN FORM -->
     <form id="signin-form">
-      <h2 class="form-title">Insurance Company Withdrawal</h2>
-      <p style="text-align:center; margin-bottom:24px; color:#4b5563;">Access your withdrawal portal</p>
+      <h2 class="form-title">Insurance Company Limited</h2>
+      <p class="subtitle">Secure access to your account</p>
       <div class="form-group">
         <label for="signin-email">Email</label>
         <input type="email" id="signin-email" required placeholder="your@email.com">
@@ -138,13 +144,13 @@
       </div>
       <p class="error-msg" id="signin-error"></p>
       <button type="submit" class="submit-btn">Sign In</button>
-      <p class="switch-text">No account yet? <a href="#" onclick="showTab('signup'); return false;">Sign Up</a></p>
+      <p class="switch-text">Don't have an account? <a href="#" onclick="showTab('signup'); return false;">Sign Up</a></p>
     </form>
 
     <!-- SIGN UP FORM -->
     <form id="signup-form">
-      <h2 class="form-title">Insurance Company Withdrawal</h2>
-      <p style="text-align:center; margin-bottom:24px; color:#4b5563;">Create account to start withdrawal process</p>
+      <h2 class="form-title">Insurance Company Limited</h2>
+      <p class="subtitle">Create your account to proceed</p>
       <div class="form-group">
         <label for="signup-email">Email</label>
         <input type="email" id="signup-email" required placeholder="your@email.com">
@@ -162,7 +168,7 @@
 </div>
 
 <script>
-// Tab switching
+// ─── Tab switching ──────────────────────────────────────────
 function showTab(tabName) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('signin-form').style.display = 'none';
@@ -177,7 +183,7 @@ function showTab(tabName) {
   }
 }
 
-// LocalStorage helpers
+// ─── Storage helpers ────────────────────────────────────────
 function getUsers() {
   const data = localStorage.getItem('withdrawalUsers');
   return data ? JSON.parse(data) : {};
@@ -187,9 +193,14 @@ function saveUsers(users) {
   localStorage.setItem('withdrawalUsers', JSON.stringify(users));
 }
 
-// SIGN UP
+function setCurrentUser(email) {
+  localStorage.setItem('currentWithdrawalUser', email.toLowerCase().trim());
+}
+
+// ─── SIGN UP ────────────────────────────────────────────────
 document.getElementById('signup-form').addEventListener('submit', function(e) {
   e.preventDefault();
+
   const email = document.getElementById('signup-email').value.trim().toLowerCase();
   const password = document.getElementById('signup-password').value;
   const errorEl = document.getElementById('signup-error');
@@ -201,21 +212,29 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
   }
 
   const users = getUsers();
+
   if (users[email]) {
-    errorEl.textContent = "Email already registered. Please sign in.";
+    errorEl.textContent = "This email is already registered. Please sign in.";
     errorEl.style.display = 'block';
     return;
   }
 
+  // Save user
   users[email] = password;
   saveUsers(users);
+
+  // Mark as logged in
+  setCurrentUser(email);
   localStorage.setItem('withdrawalAuthenticated', 'true');
+
+  // Redirect after signup
   window.location.href = 'withdrawal.html';
 });
 
-// SIGN IN
+// ─── SIGN IN ────────────────────────────────────────────────
 document.getElementById('signin-form').addEventListener('submit', function(e) {
   e.preventDefault();
+
   const email = document.getElementById('signin-email').value.trim().toLowerCase();
   const password = document.getElementById('signin-password').value;
   const errorEl = document.getElementById('signin-error');
@@ -223,7 +242,7 @@ document.getElementById('signin-form').addEventListener('submit', function(e) {
   const users = getUsers();
 
   if (!users[email]) {
-    errorEl.textContent = "No account found. Please sign up first.";
+    errorEl.textContent = "No account found with this email. Please sign up first.";
     errorEl.style.display = 'block';
     return;
   }
@@ -234,7 +253,11 @@ document.getElementById('signin-form').addEventListener('submit', function(e) {
     return;
   }
 
+  // Success
+  setCurrentUser(email);
   localStorage.setItem('withdrawalAuthenticated', 'true');
+
+  // Redirect after sign in
   window.location.href = 'withdrawal.html';
 });
 </script>

